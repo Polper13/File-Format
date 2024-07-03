@@ -1,0 +1,6 @@
+bin/
+build/
+bmps/
+.vscode/
+*.kip
+*Makefile
