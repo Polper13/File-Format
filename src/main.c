@@ -39,10 +39,13 @@ int main(int argc, char *argv[])
 // 103354 colors
 
 // 3 compairsons
-// 38s 409 ms
+// 30s 350ms
 
-// bit shifts
-// 41s 672 ms
 
-// cast to int
-// 87s 760 ms
+// nazuna benchmark
+
+// brute force
+// 234s 163ms
+
+// back approach
+// 260s 702ms

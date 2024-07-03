@@ -2,6 +2,7 @@
 #include <time.h>
 
 #include "fileWriter.h"
+#include "progresBar.h"
 
 bool generateFile(BMPDATA *bmpData)
 {
@@ -44,12 +45,16 @@ COLORLIST* scanColors(BMPDATA *bmpData)
                 addToList(list, color);
         }
 
-        int newNumber = y * 100 / bmpData->height;
-        if (newNumber != lastNumber)
-        {
-            printf("%d procent\n", newNumber);
-            lastNumber = newNumber;
-        }   
+        printProgress(y, bmpData->height - 1);
+        // int newNumber = y * 100 / bmpData->height;
+        // if (newNumber != lastNumber)
+        // {
+            // printf("%d procent\n", newNumber);
+
+
+
+            // lastNumber = newNumber;
+        // }   
     }
 
     end = clock();
