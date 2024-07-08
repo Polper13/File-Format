@@ -3,6 +3,7 @@
 
 #include "fileWriter.h"
 #include "progresBar.h"
+#include "hash.h"
 
 bool generateFile(BMPDATA *bmpData)
 {
@@ -31,6 +32,7 @@ COLORLIST* scanColors(BMPDATA *bmpData)
 
 
     COLORLIST *list = createList(4);
+    HASH *hash = createHash(4); 
     RGB color;
 
     int lastNumber = 0;
@@ -41,26 +43,27 @@ COLORLIST* scanColors(BMPDATA *bmpData)
         {
             color = getPixel(bmpData, x, y);
 
-            if (!listContains(list, &color))
-                addToList(list, color);
+            // if (!listContains(list, &color))
+            //     addToList(list, color);
+
+            printf("[%d, %d] ", x, y);
+            addToHash(hash, &color);
         }
 
         printProgress(y, bmpData->height - 1);
-        // int newNumber = y * 100 / bmpData->height;
-        // if (newNumber != lastNumber)
-        // {
-            // printf("%d procent\n", newNumber);
-
-
-
-            // lastNumber = newNumber;
-        // }   
+        printf("\n");
     }
 
     end = clock();
     cpuTimeUsed = ((double) (end - start)) / CLOCKS_PER_SEC;
 
-    printf("\ncolors: %d\n", list->length);
+    // printf("\ncolors: %d\n", list->length);
+    int count = countElementsInHash(hash);
+    // int count = hash->length;
+    printf("\ncolors: %d\n", count);
+
+    printRGB(&(*hash->data)->color);
+
     printf("time: %d s %d ms\n", (int)cpuTimeUsed, (int)(cpuTimeUsed * 1000) % 1000);
 
 

@@ -5,47 +5,50 @@
 #include "fileWriter.h"
 #include "rgb.h"
 #include "colorList.h"
-
-struct MyStruct {
-    char var1;
-    char var2;
-    char var3;
-    char var4;
-};
+#include "hash.h"
 
 int main(int argc, char *argv[]) 
 {
-    if (argc != 2) 
-    { 
-        fprintf(stderr, "Usage: %s <file.bmp>\n", argv[0]);
-        return 1;
-    }
+    // if (argc != 2) 
+    // { 
+    //     fprintf(stderr, "Usage: %s <file.bmp>\n", argv[0]);
+    //     return 1;
+    // }
 
-    BMPDATA* ptr = readBmpFile(argv[1]);
+    // BMPDATA* ptr = readBmpFile(argv[1]);
 
-    // display(ptr);
-    // printf("\n\n\n");
+    // // display(ptr);
+    // // printf("\n\n\n");
     
-    COLORLIST *list = scanColors(ptr);
+    // COLORLIST *list = scanColors(ptr);
 
-    freeList(list);
+    // freeList(list);
 
-    free(ptr->pixelData);
-    free(ptr);
+    // free(ptr->pixelData);
+    // free(ptr);
+
+    RGB color1 = (RGB){ 0, 5, 0 };
+    RGB color2 = (RGB){ 5, 5, 0 };
+    RGB color3 = (RGB){ 9, 0, 0 };
+
+    // HASH *hash = createHash(10);
+    // hash->length = 1;
+    // hash->data[0] = createNode(&color1);
+
+    struct NODE *list;
+    addNewToNodes(list, &color1);
+
+    // printRGB(&(list->color));
+
+    // int count = countElementsInNodes(*hash->data);
+    int count = countElementsInNodes(list);
+    printf(">%d", count);
 
     return 0;
 }
 //spectrum.bmp benchmark
 // 103354 colors
 
-// 3 compairsons
-// 30s 350ms
+// linear
+// 32s 156ms
 
-
-// nazuna benchmark
-
-// brute force
-// 234s 163ms
-
-// back approach
-// 260s 702ms

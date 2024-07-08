@@ -34,5 +34,5 @@ bool compare(RGB *rgb1, RGB *rgb2)
 
 void printRGB(RGB *rgb)
 {
-    printf("RGB: %u %u %u", (unsigned int)rgb->r, (unsigned int)rgb->g, (unsigned int)rgb->b);
+    printf("RGB: %u %u %u\n", (unsigned int)rgb->r, (unsigned int)rgb->g, (unsigned int)rgb->b);
 }

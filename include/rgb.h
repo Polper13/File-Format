@@ -9,7 +9,7 @@ typedef struct
     unsigned char r;
     unsigned char g;
     unsigned char b;
-} RGB __attribute__((aligned(4)));
+} RGB;
 
 RGB getPixel(BMPDATA *bmpData, int x, int y);
 bool compare(RGB *rgb1, RGB *rgb2);
